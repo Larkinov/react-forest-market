@@ -15,3 +15,21 @@ body {
   max-width: 1080px;
   margin: 50px auto;
 }
+
+header{
+  display: flex;
+  justify-content: space-between;
+
+  .headerLeft{
+    display: flex;
+    align-items: center;
+  }
+
+  img{
+    margin-left: 15px;
+  }
+
+  h3, p {
+    margin: 0;
+  }
+}
