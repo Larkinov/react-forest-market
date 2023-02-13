@@ -1,21 +1,26 @@
+import React from "react";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 
-const arr = [
-  {
-    title: "Самая лучшая елочка на районе",
-    price: "1200",
-    url: "./img/forest/tree-one.svg",
-  },
-  { title: "Дерево-дерево!", price: "1300", url: "./img/forest/tree-two.svg" },
-];
-
 function App() {
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [cartOpened, setCartOpened] = React.useState(false);
+
+  React.useEffect(()=>{
+    fetch("https://63e87eda4f3c6aa6e7beb2da.mockapi.io/items").then((res) => {
+      return res.json();
+    }).then(json => {
+      setItems(json);
+    });
+  }, []);
+  
+
   return (
     <div className="wrapper">
-      <Drawer />
-      <Header />
+      {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
+      <Header onClickCart={() => setCartOpened(true)} />
       <div className="content">
         <div className="search">
           <h1>Все товары</h1>
@@ -25,7 +30,7 @@ function App() {
           </div>
         </div>
         <div className="forest">
-          {arr.map((obj) => (
+          {items.map((obj) => (
             <Card
               title={obj.title}
               price={obj.price}

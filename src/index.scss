@@ -97,6 +97,7 @@ header{
 
   .forest{
     display:flex;
+    flex-wrap: wrap;
   }
 }
 
@@ -129,7 +130,7 @@ header{
   z-index: 1;
   width: 100%;
   height: 100%;
-  display:none;
+  // display:none;
 }
 
 .drawer{

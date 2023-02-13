@@ -1,10 +1,10 @@
-function Drawer() {
+function Drawer(props) {
   return (
     <div className="overlay">
       <div className="drawer">
         <h2>
           Корзина
-          <img src="/img/btn-close.svg" alt="close" className="removeBtn" />
+          <img onClick={props.onClose} src="/img/btn-close.svg" alt="close" className="removeBtn" />
         </h2>
         <div className="items">
           <div className="cartItem">
