@@ -1,54 +1,30 @@
-function Drawer(props) {
+function Drawer({onClose, items=[]}) {
   return (
     <div className="overlay">
       <div className="drawer">
         <h2>
           Корзина
-          <img onClick={props.onClose} src="/img/btn-close.svg" alt="close" className="removeBtn" />
+          <img onClick={onClose} src="./img/btn-close.svg" alt="close" className="removeBtn" />
         </h2>
         <div className="items">
-          <div className="cartItem">
-            <img
-              src="/img/forest/tree-one.svg"
-              alt="trees"
-              width={70}
-              height={70}
-              className="imgTree"
-            />
-            <div className="cartItem-description">
-              <p>Лучшая елочка на районе</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img src="/img/btn-close.svg" alt="close" className="removeBtn" />
-          </div>
-          <div className="cartItem">
-            <img
-              src="/img/forest/tree-one.svg"
-              alt="trees"
-              width={70}
-              height={70}
-              className="imgTree"
-            />
-            <div className="cartItem-description">
-              <p>Лучшая елочка на районе</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img src="/img/btn-close.svg" alt="close" className="removeBtn" />
-          </div>
-          <div className="cartItem">
-            <img
-              src="/img/forest/tree-one.svg"
-              alt="trees"
-              width={70}
-              height={70}
-              className="imgTree"
-            />
-            <div className="cartItem-description">
-              <p>Лучшая елочка на районе</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img src="/img/btn-close.svg" alt="close" className="removeBtn" />
-          </div>
+          {
+            items.map((obj)=>(
+              <div className="cartItem">
+                <img
+                  src={obj.url}
+                  alt="trees"
+                  width={70}
+                  height={70}
+                  className="imgTree"
+                />
+                <div className="cartItem-description">
+                  <p>{obj.title}</p>
+                  <b>{obj.price} руб.</b>
+                </div>
+                <img src="/img/btn-close.svg" alt="close" className="removeBtn" />
+              </div>
+            ))
+          }
         </div>
         <div className="cartTotalBlock">
           <ul>

@@ -15,11 +15,15 @@ function App() {
       setItems(json);
     });
   }, []);
-  
+
+  const onAddToCart = (obj) => {
+    //берем предыдущие данные и изменяем наш массив на предыдущие данные+новый объект
+    setCartItems(prev => [...prev,obj]);
+  }
 
   return (
     <div className="wrapper">
-      {cartOpened ? <Drawer onClose={() => setCartOpened(false)} /> : null}
+      {cartOpened ? <Drawer items={cartItems} onClose={() => setCartOpened(false)} /> : null}
       <Header onClickCart={() => setCartOpened(true)} />
       <div className="content">
         <div className="search">
@@ -30,13 +34,14 @@ function App() {
           </div>
         </div>
         <div className="forest">
-          {items.map((obj) => (
+          {items.map((item) => (
             <Card
-              title={obj.title}
-              price={obj.price}
-              url={obj.url}
+              key={item.title}
+              title={item.title}
+              price={item.price}
+              url={item.url}
               onClickLike={() => console.log("like")}
-              onClickPlus={() => console.log("plus")}
+              onClickPlus={(obj)=>onAddToCart(obj)}
             />
           ))}
         </div>
