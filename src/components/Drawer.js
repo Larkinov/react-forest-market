@@ -13,19 +13,22 @@ function Drawer({ onClose, onRemove, items = [] }) {
         </h2>
         {items.length > 0 ? (
           <div className="items">
-            {items.map((obj) => (
-              <div className="cartItem">
-                <img
-                  src={obj.url}
-                  alt="trees"
-                  width={70}
-                  height={70}
-                  className="imgTree"
-                />
-                <div className="cartItem-description">
-                  <p>{obj.title}</p>
-                  <b>{obj.price} руб.</b>
+            {items.map((obj,index) => (
+              <div className="cartItem" key={index}>
+                <div style={{display:"flex"}}>
+                  <img
+                    src={obj.url}
+                    alt="trees"
+                    width={70}
+                    height={70}
+                    className="imgTree"
+                  />
+                  <div className="cartItem-description">
+                    <p>{obj.title}</p>
+                    <b>{obj.price} руб.</b>
+                  </div>
                 </div>
+                
                 <img
                   src="/img/btn-close.svg"
                   alt="close"

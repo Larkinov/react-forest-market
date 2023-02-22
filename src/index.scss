@@ -241,6 +241,7 @@ header{
   .cartItem{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border: 1px solid #f3f3f3;
     border-radius: 20px;
     overflow: hidden;
@@ -258,7 +259,7 @@ header{
     .cartItem-description{
       margin-right: 40px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       flex-direction: column;
     }
 
